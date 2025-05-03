@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">CafeteriaUDB</string>
+    <string name="navigation_drawer_abrir">Abrir menú</string>
+    <string name="navigation_drawer_cerrar">Cerrar menú</string>
 </resources>

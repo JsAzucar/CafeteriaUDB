@@ -1,18 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="16dp">
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_inicio"
+        android:title="Inicio"
+        android:icon="@drawable/ic_home" />
 
-    <Button
-        android:id="@+id/btn_configuracion"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Configuración"
-        android:drawableStart="@drawable/ic_settings"
-        android:gravity="start|center_vertical"
-        android:background="@drawable/btn_menu"
-        android:padding="16dp"
-        android:textColor="@android:color/white"/>
-</LinearLayout>
+    <item
+        android:id="@+id/nav_configuracion"
+        android:title="Configuracion"
+        android:icon="@drawable/ic_settings" />
+
+</menu>
