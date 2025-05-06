@@ -1,5 +1,6 @@
 package com.sugardaddy.cafeteriaudb.ui.platillos
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,6 +29,18 @@ class AdaptadorPlatillos(private val lista: List<Platillo>) :
         holder.nombre.text = platillo.nombre
         holder.precio.text = "$${platillo.precio}"
         holder.imagen.setImageResource(platillo.imagenResId)
+
+        //Aquí agregamos el evento de clic para abrir la pantalla de detalle
+        holder.itemView.setOnClickListener {
+            val contexto = holder.itemView.context
+            val intent = Intent(contexto, DetallePlatilloActivity::class.java).apply {
+                putExtra("nombre", platillo.nombre)
+                putExtra("precio", platillo.precio)
+                putExtra("imagen", platillo.imagenResId)
+                putExtra("descripcion", platillo.descripcion)
+            }
+            contexto.startActivity(intent)
+        }
     }
 
     override fun getItemCount(): Int = lista.size

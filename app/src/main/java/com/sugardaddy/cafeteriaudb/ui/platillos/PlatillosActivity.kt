@@ -28,9 +28,9 @@ class PlatillosActivity : AppCompatActivity() {
 
     private fun obtenerPlatillos(tipo: String): List<Platillo> {
         return listOf(
-            Platillo("Plato 1", 10.0, R.drawable.plato_ejemplo),
-            Platillo("Plato 2", 10.0, R.drawable.plato_ejemplo),
-            Platillo("Plato 3", 10.0, R.drawable.plato_ejemplo)
+            Platillo("Plato 1", 2.50, R.drawable.plato_ejemplo, "Descripción del Plato 1."),
+            Platillo("Plato 2", 3.50, R.drawable.plato_ejemplo, "Descripción del Plato 2."),
+            Platillo("Plato 3", 4.50, R.drawable.plato_ejemplo, "Descripción del Plato 3.")
         )
     }
 }
