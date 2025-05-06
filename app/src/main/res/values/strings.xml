@@ -1,3 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">CafeteriaUDB</string>
+
+    <!-- Authentication -->
+    <string name="menu_titulo">Menu UDB</string>
+    <string name="menu_subtitulo">Planea tus comidas</string>
+    <string name="login_button">Iniciar Sesión</string>
+    <string name="register_button">Registrarse</string>
 </resources>

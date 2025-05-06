@@ -2,4 +2,18 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- Authentication -->
+    <color name="colorFondoPrincipal">#FCEEEE</color>
+    <color name="colorTextoTitulo">#222222</color>
+    <color name="colorTextoSecundario">#555555</color>
+
+
+    <!-- Colores App -->
+    <color name="colorPrimario1">#4932CA</color>
+    <color name="colorPrimario2">#5042A0</color>
+    <color name="colorPrimario3">#3431F4</color>
+    <color name="colorPrimario4">#4B4475</color>
+    <color name="colorPrimario5">#3B384B</color>
+
 </resources>
