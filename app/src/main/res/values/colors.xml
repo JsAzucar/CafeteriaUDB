@@ -15,5 +15,6 @@
     <color name="colorPrimario3">#3431F4</color>
     <color name="colorPrimario4">#4B4475</color>
     <color name="colorPrimario5">#3B384B</color>
+    <color name="colorExtra">#2ED330</color>
 
 </resources>

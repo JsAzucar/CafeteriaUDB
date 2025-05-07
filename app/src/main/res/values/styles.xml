@@ -29,4 +29,13 @@
         <item name="android:fontFamily">@font/lato_bold</item>
         <item name="android:textSize">18sp</item>
     </style>
+
+    <!-- Estilo para errores -->
+    <style name="ErrorTextStyle">
+        <item name="android:textColor">@android:color/holo_red_dark</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:visibility">gone</item>
+        <item name="android:fontFamily">@font/lato_regular</item>
+    </style>
+
 </resources>

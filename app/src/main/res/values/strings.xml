@@ -7,4 +7,34 @@
     <string name="menu_subtitulo">Planea tus comidas</string>
     <string name="login_button">Iniciar Sesión</string>
     <string name="register_button">Registrarse</string>
+
+    <!-- Registrarse -->
+    <string name="registrarse">Registrarse</string>
+    <string name="hint_usuario">Nombre de usuario</string>
+    <string name="hint_email">Correo electrónico</string>
+    <string name="hint_fecha">Fecha de nacimiento</string>
+    <string name="hint_contrasenia">Contraseña</string>
+    <string name="hint_repetir_contrasenia">Repetir contraseña</string>
+    <string name="generar_nombre">Generar nombre</string>
+    <string name="ya_tienes_cuenta">¿Ya tienes una cuenta?\nEntrar</string>
+    <string name="back">Regresar</string>
+    <string name="error_usuario_existente">Ese nombre de usuario ya existe</string>
+
+    <!-- Login -->
+    <string name="login_title">Iniciar sesión</string>
+    <string name="login_email_hint">Correo o nombre de usuario</string>
+    <string name="login_password_hint">Contraseña</string>
+    <string name="login_forgot_password">¿Olvidó su contraseña?</string>
+    <string name="login_register">¿Aún no tiene cuenta? Regístrese</string>
+    <string name="login_user_not_found">Usuario no encontrado</string>
+    <string name="login_invalid_credentials">Credenciales inválidas</string>
+    <string name="login_empty_fields">Complete todos los campos</string>
+
+    <!-- Bienvenida MainActivity -->
+    <string name="main_welcome_admin">Bienvenido administrador</string>
+    <string name="main_welcome_user">Bienvenido usuario</string>
+    <string name="main_admin_panel">Panel de administración</string>
+
+
+
 </resources>

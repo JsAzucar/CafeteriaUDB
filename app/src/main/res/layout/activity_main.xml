@@ -5,15 +5,69 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorFondoPrincipal"
+    android:padding="24dp"
     tools:context=".ui.main.MainActivity">
 
+
+    <!-- Bienvenida -->
     <TextView
+        android:id="@+id/txtBienvenida"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Bienvenido"
+        android:textSize="30sp"
+        android:fontFamily="@font/dancing_script_bold"
+        android:textColor="@color/colorTextoTitulo"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="40dp"/>
+
+    <!-- Botón Ver Menú -->
+    <Button
+        android:id="@+id/btnVerMenu"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:text="Ver menú"
+        android:textSize="20sp"
+        android:fontFamily="@font/lato_regular"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/colorPrimario2"
+        app:layout_constraintTop_toBottomOf="@id/txtBienvenida"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="32dp"/>
+
+    <!-- Botón Mi Perfil -->
+    <Button
+        android:id="@+id/btnMiPerfil"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:text="Mi perfil"
+        android:textSize="20sp"
+        android:fontFamily="@font/lato_regular"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/colorPrimario3"
+        app:layout_constraintTop_toBottomOf="@id/btnVerMenu"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"/>
+
+    <!-- Botón solo visible para admin -->
+    <Button
+        android:id="@+id/btnAdminPanel"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:text="@string/main_admin_panel"
+        android:textSize="20sp"
+        android:fontFamily="@font/lato_bold"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/colorPrimario4"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/btnMiPerfil"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
