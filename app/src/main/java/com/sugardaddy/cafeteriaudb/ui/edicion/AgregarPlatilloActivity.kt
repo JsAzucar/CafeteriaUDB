@@ -23,7 +23,6 @@ class AgregarPlatilloActivity : AppCompatActivity() {
     private lateinit var inputImagen: EditText
     private lateinit var inputPrecio: EditText
     private lateinit var btnAgregar: Button
-    private lateinit var btnSubirImagen: Button
     private var platilloAEditar: platillos? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,7 +33,6 @@ class AgregarPlatilloActivity : AppCompatActivity() {
         inputPrecio = findViewById(R.id.input_precio)
         inputImagen = findViewById(R.id.input_imagen)
         btnAgregar = findViewById(R.id.btn_agregar)
-        btnAgregar = findViewById(R.id.btn_subir_imagen)
 
         inicializar()
     }
@@ -65,11 +63,7 @@ class AgregarPlatilloActivity : AppCompatActivity() {
             inputImagen.setText(platilloAEditar!!.imagen)
         }
 
-        btnSubirImagen = findViewById(R.id.btn_subir_imagen)
 
-        btnSubirImagen.setOnClickListener {
-            seleccionarImagen.launch("image/*")
-        }
 
         btnAgregar.setOnClickListener {
             val nombre = inputNombre.text.toString()
@@ -125,16 +119,6 @@ class AgregarPlatilloActivity : AppCompatActivity() {
         }
     }
 
-    private val seleccionarImagen = registerForActivityResult(
-        ActivityResultContracts.GetContent()
-    ) { uri: Uri? ->
-        uri?.let {
-            FirebaseRepository.subirImagenFirebase(this,it) { url ->
-                inputImagen.setText(url)
-                Toast.makeText(this, "Imagen subida correctamente", Toast.LENGTH_SHORT).show()
-            }
-        }
-    }
 
 
 }

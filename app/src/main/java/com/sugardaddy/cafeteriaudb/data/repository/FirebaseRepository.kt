@@ -160,22 +160,6 @@ object FirebaseRepository {
         }
     }
 
-    fun subirImagenFirebase(context: Context, uri: Uri, callback: (String) -> Unit) {
-        val storageRef = FirebaseStorage.getInstance().reference
-        val nombreArchivo = UUID.randomUUID().toString() + ".jpg"
-        val imagenRef = storageRef.child("imagenes/$nombreArchivo")
-
-        imagenRef.putFile(uri)
-            .addOnSuccessListener {
-                imagenRef.downloadUrl.addOnSuccessListener { url ->
-                    callback(url.toString())
-                }
-            }
-            .addOnFailureListener {
-                Log.e("FirebaseStorage", "Error al subir imagen", it)
-                Toast.makeText(context, "Error al subir imagen", Toast.LENGTH_SHORT).show()
-            }
-    }
 
 
 }

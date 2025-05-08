@@ -51,13 +51,7 @@
                 android:layout_height="wrap_content"
                 android:hint="URL de imagen"
                 android:layout_marginBottom="20sp"/>
-            <Button
-                android:id="@+id/btn_subir_imagen"
-                android:text="Seleccionar desde galería"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="10sp"/>
+
 
             <TextView
                 android:layout_width="match_parent"
