@@ -6,18 +6,22 @@ import android.util.Log
 import android.widget.Toast
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.FirebaseStorage
 import com.sugardaddy.cafeteriaudb.data.model.menu
 import com.sugardaddy.cafeteriaudb.data.model.platillos
 import java.util.UUID
+import com.sugardaddy.cafeteriaudb.data.model.Usuario
 
 object FirebaseRepository {
     private val dbRef = FirebaseDatabase.getInstance().reference
     private val platosRef = FirebaseDatabase.getInstance().getReference("platos")
 
     val menus = listOf("desayuno","almuerzo", "cena")
+
+    private val db: DatabaseReference = FirebaseDatabase.getInstance().getReference("usuarios")
 
     fun crearNodos(){
         menus.forEach { nombreMenu ->
@@ -48,6 +52,10 @@ object FirebaseRepository {
         }
 
 
+    }
+
+    fun guardarUsuario(uid: String, usuario: Usuario) {
+        db.child(uid).setValue(usuario)
     }
 
     fun consultarMenu(callback: (Map<String, List<platillos>>) -> Unit): Pair<ValueEventListener, List<ValueEventListener>> {
@@ -160,6 +168,51 @@ object FirebaseRepository {
         }
     }
 
+    fun obtenerUsuarioPorUID(uid: String, callback: (Usuario?) -> Unit) {
+        db.child(uid).get().addOnSuccessListener { snapshot ->
+            val usuario = snapshot.getValue(Usuario::class.java)
+            callback(usuario)
+        }.addOnFailureListener {
+            callback(null)
+        }
+    }
+
+    fun actualizarRol(uid: String, nuevoRol: String) {
+        db.child(uid).child("rol").setValue(nuevoRol)
+    }
+
+    fun obtenerTodosLosUsuarios(callback: (List<Usuario>) -> Unit) {
+        db.get().addOnSuccessListener { snapshot ->
+            val lista = mutableListOf<Usuario>()
+            snapshot.children.forEach { child ->
+                val usuario = child.getValue(Usuario::class.java)
+                if (usuario != null) {
+                    lista.add(usuario)
+                }
+            }
+            callback(lista)
+        }.addOnFailureListener {
+            callback(emptyList())
+        }
+    }
+
+    fun obtenerUsuarioPorNombreOEmail(input: String, callback: (Usuario?, String?) -> Unit) {
+        db.get().addOnSuccessListener { snapshot ->
+            for (child in snapshot.children) {
+                val usuario = child.getValue(Usuario::class.java)
+                if (usuario != null &&
+                    (usuario.nombre.equals(input, ignoreCase = true)
+                            || usuario.correo.equals(input, ignoreCase = true))
+                ) {
+                    callback(usuario, child.key)
+                    return@addOnSuccessListener
+                }
+            }
+            callback(null, null)
+        }.addOnFailureListener {
+            callback(null, null)
+        }
+    }
 
 
 }

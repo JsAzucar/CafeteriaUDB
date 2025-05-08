@@ -1,44 +1,71 @@
 package com.sugardaddy.cafeteriaudb.ui.main
 
+import android.app.AlertDialog
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import androidx.activity.enableEdgeToEdge
+import android.widget.Button
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.google.firebase.FirebaseApp
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.auth.FirebaseAuth
 import com.sugardaddy.cafeteriaudb.R
+import com.sugardaddy.cafeteriaudb.ui.authentication.IniciarSesionActivity
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var firebaseRef: DatabaseReference //En una referencia a un nodo en Firebase Realtime database
+    private lateinit var txtBienvenida: TextView
+    private lateinit var btnAdminPanel: Button
+    private lateinit var btnVerMenu: Button
+    private lateinit var btnMiPerfil: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 
-        // Inicializar Firebase
-        FirebaseApp.initializeApp(this)
+        txtBienvenida = findViewById(R.id.txtBienvenida)
+        btnAdminPanel = findViewById(R.id.btnAdminPanel)
+        btnVerMenu = findViewById(R.id.btnVerMenu)
+        btnMiPerfil = findViewById(R.id.btnMiPerfil)
 
-        // Obtener la referencia de la base de datos
-        firebaseRef = FirebaseDatabase.getInstance().reference
+        val rolUsuario = intent.getStringExtra("ROL_USUARIO") ?: "usuario"
+        val nombreUsuario = intent.getStringExtra("ROL_USUARIO") ?: "usuario"
 
-        // Escribir datos en Firebase
-        escribirEnFirebase()
+        if (rolUsuario == "administrador") {
+            txtBienvenida.text = getString(R.string.main_welcome_admin)
+            btnAdminPanel.visibility = Button.VISIBLE
+        } else {
+            txtBienvenida.text = getString(R.string.main_welcome_user)
+            btnAdminPanel.visibility = Button.GONE
+        }
 
+        // Acciones de botones (ejemplo)
+        btnVerMenu.setOnClickListener {
+            // Ir a pantalla de ver menú
+        }
+
+        btnMiPerfil.setOnClickListener {
+            // Ir a pantalla de perfil
+        }
+
+        btnAdminPanel.setOnClickListener {
+            // Ir a pantalla de administración
+        }
     }
-    private fun escribirEnFirebase() {
-        val mensaje = mapOf(
-            "mensaje" to "¡Hola Firebase!"
-        )
+    override fun onBackPressed() {
+        val dialog = AlertDialog.Builder(this)
+            .setTitle("Cerrar sesión")
+            .setMessage("¿Deseas cerrar tu sesión?")
+            .setPositiveButton("Sí") { _, _ ->
+                // Cierra sesión y vuelve a Login
+                FirebaseAuth.getInstance().signOut()
+                val intent = Intent(this, IniciarSesionActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                startActivity(intent)
+                finish()
+            }
+            .setNegativeButton("Cancelar", null)
+            .create()
 
-        firebaseRef.child("mensajes").push().setValue(mensaje)
-            .addOnSuccessListener {
-                Log.d("Firebase", "Datos guardados exitosamente en Firebase")
-            }
-            .addOnFailureListener { e ->
-                Log.e("Firebase", "Error al guardar datos: ${e.message}", e)
-            }
+        dialog.show()
     }
+
 }

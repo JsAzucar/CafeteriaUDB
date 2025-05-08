@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -75,6 +76,9 @@ class InicioActivity : AppCompatActivity() {
 
     private fun inicializar(){
 
+        val rolUsuario = intent.getStringExtra("ROL_USUARIO") ?: "usuario"
+        val nombreUsuario = intent.getStringExtra("NOMBRE_USUARIO") ?: "usuario"
+
         vistaInicio = findViewById(R.id.Inicio)
         navView = findViewById(R.id.nav_view)
         toolbar = findViewById(R.id.barra_superior)
@@ -83,9 +87,22 @@ class InicioActivity : AppCompatActivity() {
         btnCena = findViewById(R.id.btn_cena)
         btnEditar = findViewById(R.id.btn_editar)
 
+        val headerView = navView.getHeaderView(0)
+
         vistaDesayuno = findViewById(R.id.recycler_platillos_desayuno)
         vistaAlmuerzo = findViewById(R.id.recycler_platillos_almuerzo)
         vistaCena = findViewById(R.id.recycler_platillos_cena)
+
+        if (rolUsuario == "administrador") {
+            //txtBienvenida.text = getString(R.string.main_welcome_admin)
+            btnEditar.visibility = Button.VISIBLE
+        } else {
+            //txtBienvenida.text = getString(R.string.main_welcome_user)
+            btnEditar.visibility = Button.GONE
+        }
+
+        val txtTitulo = headerView.findViewById<TextView>(R.id.titulo)
+        txtTitulo.text = "Bienvenido, $nombreUsuario"
 
         setSupportActionBar(toolbar)
         FirebaseRepository.crearNodos()

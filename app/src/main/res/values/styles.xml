@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Estilo para títulos principales -->
+    <style name="TituloPrincipal">
+        <item name="android:textSize">30sp</item>
+        <item name="android:textColor">@color/colorPrimario5</item>
+        <item name="android:fontFamily">@font/dancing_script_bold</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- Estilo para subtítulos -->
+    <style name="SubtituloPrincipal">
+        <item name="android:textSize">22sp</item>
+        <item name="android:textColor">@color/colorPrimario4</item>
+        <item name="android:fontFamily">@font/dancing_script_regular</item>
+    </style>
+
+    <!-- Estilo general para texto -->
+    <style name="TextoNormal">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/colorPrimario5</item>
+        <item name="android:fontFamily">@font/lato_regular</item>
+    </style>
+
+    <!-- Estilo para botones -->
+    <style name="BotonEstilo">
+        <item name="android:backgroundTint">@color/colorPrimario1</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:fontFamily">@font/lato_bold</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <!-- Estilo para errores -->
+    <style name="ErrorTextStyle">
+        <item name="android:textColor">@android:color/holo_red_dark</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:visibility">gone</item>
+        <item name="android:fontFamily">@font/lato_regular</item>
+    </style>
+
+</resources>

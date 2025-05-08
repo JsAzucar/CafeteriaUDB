@@ -1,10 +1,11 @@
 package com.sugardaddy.cafeteriaudb.ui.detalle
 
 import android.os.Bundle
-import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
+import androidx.drawerlayout.widget.DrawerLayout
 import com.bumptech.glide.Glide
 import com.sugardaddy.cafeteriaudb.R
 
@@ -30,5 +31,19 @@ class DetallePlatilloActivity : AppCompatActivity() {
             .error(R.drawable.plato_ejemplo)
             .circleCrop()
             .into(imagenURL)
+
+        inicializar()
+    }
+
+    private fun inicializar() {
+        val toolbar: Toolbar = findViewById(R.id.barra_superior)
+        val vistaDescripcion: DrawerLayout = findViewById(R.id.Inicio)
+
+        toolbar.setNavigationIcon(R.drawable.ic_back_arrow)
+        toolbar.setNavigationOnClickListener {
+            onBackPressedDispatcher.onBackPressed()
+        }
+
+        vistaDescripcion.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
     }
 }

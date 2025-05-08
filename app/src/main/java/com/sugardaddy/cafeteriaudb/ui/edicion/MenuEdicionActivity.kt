@@ -31,6 +31,8 @@ class MenuEdicionActivity : AppCompatActivity() {
             onBackPressedDispatcher.onBackPressed()
         }
 
+        vistaEditar.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
+
         btnEditarMenu.setOnClickListener {
             val i = Intent(this,EdicionMenuActivity::class.java)
             startActivity(i)
