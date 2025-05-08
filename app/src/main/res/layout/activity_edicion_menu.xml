@@ -18,55 +18,13 @@
             android:layout_height="?attr/actionBarSize"
             android:background="#29B6F6"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:title="@string/toolbar_inicio" />
+            app:title="@string/toolbar_editar_menu" />
 
         <Button
+            android:id="@+id/btn_desayuno"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/btn_menu_desayuno"
-            android:textColor="@color/white"
-            android:textSize="25sp"
-            android:paddingHorizontal="24dp"
-            android:paddingVertical="12dp"
-            android:background="@drawable/btn_selector"
-            android:backgroundTint="@null"
-            android:layout_marginVertical="10dp"
-            android:layout_marginHorizontal="15sp"
-            android:fontFamily="@font/dancingscript_bold"/>
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/btn_menu_almuerzo"
-            android:textColor="@color/white"
-            android:textSize="25sp"
-            android:paddingHorizontal="24dp"
-            android:paddingVertical="12dp"
-            android:background="@drawable/btn_selector"
-            android:backgroundTint="@null"
-            android:layout_marginVertical="10dp"
-            android:layout_marginHorizontal="15sp"
-            android:fontFamily="@font/dancingscript_bold"/>
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/btn_menu_cena"
-            android:textColor="@color/white"
-            android:textSize="25sp"
-            android:paddingHorizontal="24dp"
-            android:paddingVertical="12dp"
-            android:background="@drawable/btn_selector"
-            android:backgroundTint="@null"
-            android:layout_marginVertical="10dp"
-            android:layout_marginHorizontal="15sp"
-            android:fontFamily="@font/dancingscript_bold"/>
-
-        <Button
-            android:id="@+id/btn_editar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/btn_menu_editar"
+            android:text="@string/btn_editar_desayuno"
             android:textColor="@color/white"
             android:textSize="25sp"
             android:paddingHorizontal="24dp"
@@ -78,8 +36,79 @@
             android:fontFamily="@font/dancingscript_bold"/>
 
 
+        <Button
+            android:id="@+id/btn_agregar_desayuno"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_agregar_plato"
+            android:paddingHorizontal="24dp"
+            android:paddingVertical="12dp"
+            android:background="@drawable/btn_selector"
+            android:visibility="gone"/>
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/contenedor_desayuno"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"/>
 
+        <Button
+            android:id="@+id/btn_almuerzo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_editar_almuerzo"
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            android:paddingHorizontal="24dp"
+            android:paddingVertical="12dp"
+            android:background="@drawable/btn_selector"
+            android:backgroundTint="@null"
+            android:layout_marginVertical="10dp"
+            android:layout_marginHorizontal="15sp"
+            android:fontFamily="@font/dancingscript_bold"/>
+        <Button
+            android:id="@+id/btn_agregar_almuerzo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_agregar_plato"
+            android:paddingHorizontal="24dp"
+            android:paddingVertical="12dp"
+            android:background="@drawable/btn_selector"
+            android:visibility="gone"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/contenedor_almuerzo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"/>
+
+        <Button
+            android:id="@+id/btn_cena"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_editar_cena"
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            android:paddingHorizontal="24dp"
+            android:paddingVertical="12dp"
+            android:background="@drawable/btn_selector"
+            android:backgroundTint="@null"
+            android:layout_marginVertical="10dp"
+            android:layout_marginHorizontal="15sp"
+            android:fontFamily="@font/dancingscript_bold"/>
+        <Button
+            android:id="@+id/btn_agregar_cena"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_agregar_plato"
+            android:paddingHorizontal="24dp"
+            android:paddingVertical="12dp"
+            android:background="@drawable/btn_selector"
+            android:visibility="gone"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/contenedor_cena"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="visible"/>
 
 
 
