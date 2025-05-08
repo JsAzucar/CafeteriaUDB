@@ -1,12 +1,17 @@
 package com.sugardaddy.cafeteriaudb.data.repository
 
+import android.content.Context
+import android.net.Uri
 import android.util.Log
+import android.widget.Toast
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.storage.FirebaseStorage
 import com.sugardaddy.cafeteriaudb.data.model.menu
 import com.sugardaddy.cafeteriaudb.data.model.platillos
+import java.util.UUID
 
 object FirebaseRepository {
     private val dbRef = FirebaseDatabase.getInstance().reference
@@ -153,6 +158,23 @@ object FirebaseRepository {
                 }
             }
         }
+    }
+
+    fun subirImagenFirebase(context: Context, uri: Uri, callback: (String) -> Unit) {
+        val storageRef = FirebaseStorage.getInstance().reference
+        val nombreArchivo = UUID.randomUUID().toString() + ".jpg"
+        val imagenRef = storageRef.child("imagenes/$nombreArchivo")
+
+        imagenRef.putFile(uri)
+            .addOnSuccessListener {
+                imagenRef.downloadUrl.addOnSuccessListener { url ->
+                    callback(url.toString())
+                }
+            }
+            .addOnFailureListener {
+                Log.e("FirebaseStorage", "Error al subir imagen", it)
+                Toast.makeText(context, "Error al subir imagen", Toast.LENGTH_SHORT).show()
+            }
     }
 
 

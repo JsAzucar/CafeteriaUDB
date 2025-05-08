@@ -21,6 +21,9 @@
             android:name=".ui.edicion.EdicionPlatoActivity"
             android:exported="false" />
         <activity
+            android:name=".ui.detalle.DetallePlatilloActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.edicion.EdicionMenuActivity"
             android:exported="false" />
         <activity

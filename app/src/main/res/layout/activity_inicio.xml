@@ -21,6 +21,7 @@
             app:title="@string/toolbar_inicio" />
 
         <Button
+            android:id="@+id/btn_desayuno"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/btn_menu_desayuno"
@@ -34,7 +35,15 @@
             android:layout_marginHorizontal="15sp"
             android:fontFamily="@font/dancingscript_bold"/>
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_platillos_desayuno"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:visibility="gone"/>
+
         <Button
+            android:id="@+id/btn_almuerzo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/btn_menu_almuerzo"
@@ -48,7 +57,15 @@
             android:layout_marginHorizontal="15sp"
             android:fontFamily="@font/dancingscript_bold"/>
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_platillos_almuerzo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:visibility="gone"/>
+
         <Button
+            android:id="@+id/btn_cena"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/btn_menu_cena"
@@ -61,6 +78,13 @@
             android:layout_marginVertical="10dp"
             android:layout_marginHorizontal="15sp"
             android:fontFamily="@font/dancingscript_bold"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_platillos_cena"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:visibility="gone"/>
 
         <Button
             android:id="@+id/btn_editar"

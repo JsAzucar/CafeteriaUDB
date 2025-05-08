@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="120dp"
+    android:orientation="horizontal"
+    android:padding="10dp"
+    android:background="#1E88E5"
+    android:layout_margin="8dp"
+    android:gravity="center_vertical"
+    android:elevation="4dp"
+    android:backgroundTint="#1E88E5">
+
+    <ImageView
+        android:id="@+id/imagen_plato"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/circulo_amarillo"
+        android:scaleType="centerCrop"
+        android:padding="5dp" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/nombre_plato"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Plato X"
+            android:textStyle="italic"
+            android:textSize="20sp"
+            android:textColor="#FFFFFF" />
+
+        <TextView
+            android:id="@+id/precio_plato"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$10"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+</LinearLayout>
