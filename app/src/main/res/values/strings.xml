@@ -1,6 +1,36 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">CafeteriaUDB</string>
+
+    <string name="toolbar_inicio">Inicio</string>
+    <string name="navigation_drawer_abrir">Abrir menú</string>
+    <string name="navigation_drawer_cerrar">Cerrar menú</string>
+
+    <string name="btn_menu_desayuno">Desayuno</string>
+    <string name="btn_menu_almuerzo">Almuerzo</string>
+    <string name="btn_menu_cena">Cena/Merienda</string>
+    <string name="btn_menu_editar">Editar menú / platillo</string>
+
+    <string name="toolbar_descripcion">Descripcion</string>
+
+    <string name="toolbar_editar">Editar</string>
+    <string name="btn_menu_editar_menu">Editar Menu</string>
+    <string name="btn_menu_editar_platillos">Editar Platillos</string>
+
+    <string name="btn_editar_desayuno">Desayuno</string>
+    <string name="btn_editar_almuerzo">Almuerzo</string>
+    <string name="btn_editar_cena">Cena/Merienda</string>
+
+    <string name="toolbar_platillos">Platillos</string>
+    <string name="btn_agregar_plato">Agregar platillos</string>
+
+    <string name="txt_nombre">Nombre del plato:</string>
+    <string name="txt_imagen">Imagen del plato (URL):</string>
+    <string name="txt_descripcion">Descripcion del plato:</string>
+    <string name="txt_precio">Precio del plato:</string>
+    <string name="btn_agregar">Agregar</string>
+    <string name="btn_editar_platillo">Guardar Cambios</string>
+
+    <string name="toolbar_editar_menu">Editar Menu</string>
 
     <!-- Authentication -->
     <string name="menu_titulo">Menu UDB</string>
@@ -34,7 +64,6 @@
     <string name="main_welcome_admin">Bienvenido administrador</string>
     <string name="main_welcome_user">Bienvenido usuario</string>
     <string name="main_admin_panel">Panel de administración</string>
-
 
 
 </resources>

@@ -34,6 +34,30 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".ui.edicion.AgregarPlatilloActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.edicion.EdicionPlatoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.detalle.DetallePlatilloActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.edicion.EdicionMenuActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.edicion.MenuEdicionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.inicio.InicioActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".ui.main.MainActivity"
             android:exported="true" />
     </application>

@@ -27,6 +27,7 @@ class MainActivity : AppCompatActivity() {
         btnMiPerfil = findViewById(R.id.btnMiPerfil)
 
         val rolUsuario = intent.getStringExtra("ROL_USUARIO") ?: "usuario"
+        val nombreUsuario = intent.getStringExtra("ROL_USUARIO") ?: "usuario"
 
         if (rolUsuario == "administrador") {
             txtBienvenida.text = getString(R.string.main_welcome_admin)

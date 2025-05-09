@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.sugardaddy.cafeteriaudb.R
 import com.sugardaddy.cafeteriaudb.data.repository.FirebaseRepository
+import com.sugardaddy.cafeteriaudb.ui.inicio.InicioActivity
 import com.sugardaddy.cafeteriaudb.ui.main.MainActivity
 
 class IniciarSesionActivity : AppCompatActivity() {
