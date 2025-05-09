@@ -28,14 +28,12 @@
 
             <Button
                 android:id="@+id/btnAgregarPlatillo"
+                style="@style/Widget.CafeteriaUDB.Button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/btn_agregar_plato"
-                android:fontFamily="@font/dancingscript_bold"
-                android:textSize="20sp"
-                android:textColor="@color/white"
                 android:layout_margin="5sp"
-                android:background="@drawable/btn_selector"/>
+                />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerPlatillos"

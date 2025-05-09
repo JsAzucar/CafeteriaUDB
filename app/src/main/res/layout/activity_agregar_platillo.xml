@@ -79,14 +79,11 @@
                 android:layout_marginBottom="20sp"/>
             <Button
                 android:id="@+id/btn_agregar"
+                style="@style/Widget.CafeteriaUDB.Button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:background="@drawable/btn_selector"
                 android:padding="15sp"
-                android:fontFamily="@font/dancingscript_bold"
-                android:textSize="20sp"
-                android:textColor="@color/white"
                 android:text="@string/btn_agregar"/>
 
 

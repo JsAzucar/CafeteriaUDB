@@ -22,33 +22,25 @@
 
         <Button
             android:id="@+id/btn_editar_menu"
+            style="@style/Widget.CafeteriaUDB.Button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/btn_menu_editar_menu"
-            android:textColor="@color/white"
-            android:textSize="25sp"
             android:paddingHorizontal="24dp"
             android:paddingVertical="12dp"
-            android:background="@drawable/btn_selector"
-            android:backgroundTint="@null"
             android:layout_marginVertical="10dp"
-            android:layout_marginHorizontal="15sp"
-            android:fontFamily="@font/dancingscript_bold"/>
+            android:layout_marginHorizontal="15sp"/>
 
         <Button
             android:id="@+id/btn_editar_plato"
+            style="@style/Widget.CafeteriaUDB.Button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/btn_menu_editar_platillos"
-            android:textColor="@color/white"
-            android:textSize="25sp"
             android:paddingHorizontal="24dp"
             android:paddingVertical="12dp"
-            android:background="@drawable/btn_selector"
-            android:backgroundTint="@null"
             android:layout_marginVertical="10dp"
-            android:layout_marginHorizontal="15sp"
-            android:fontFamily="@font/dancingscript_bold"/>
+            android:layout_marginHorizontal="15sp"/>
 
 
 

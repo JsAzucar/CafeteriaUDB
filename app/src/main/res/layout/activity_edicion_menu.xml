@@ -22,28 +22,24 @@
 
         <Button
             android:id="@+id/btn_desayuno"
+            style="@style/Widget.CafeteriaUDB.Button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/btn_editar_desayuno"
-            android:textColor="@color/white"
-            android:textSize="25sp"
             android:paddingHorizontal="24dp"
             android:paddingVertical="12dp"
-            android:background="@drawable/btn_selector"
-            android:backgroundTint="@null"
             android:layout_marginVertical="10dp"
-            android:layout_marginHorizontal="15sp"
-            android:fontFamily="@font/dancingscript_bold"/>
+            android:layout_marginHorizontal="15sp"/>
 
 
         <Button
             android:id="@+id/btn_agregar_desayuno"
+            style="@style/Widget.CafeteriaUDB.Button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/btn_agregar_plato"
             android:paddingHorizontal="24dp"
             android:paddingVertical="12dp"
-            android:background="@drawable/btn_selector"
             android:visibility="gone"/>
 
         <androidx.recyclerview.widget.RecyclerView
@@ -54,26 +50,22 @@
 
         <Button
             android:id="@+id/btn_almuerzo"
+            style="@style/Widget.CafeteriaUDB.Button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/btn_editar_almuerzo"
-            android:textColor="@color/white"
-            android:textSize="25sp"
             android:paddingHorizontal="24dp"
             android:paddingVertical="12dp"
-            android:background="@drawable/btn_selector"
-            android:backgroundTint="@null"
             android:layout_marginVertical="10dp"
-            android:layout_marginHorizontal="15sp"
-            android:fontFamily="@font/dancingscript_bold"/>
+            android:layout_marginHorizontal="15sp"/>
         <Button
             android:id="@+id/btn_agregar_almuerzo"
+            style="@style/Widget.CafeteriaUDB.Button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/btn_agregar_plato"
             android:paddingHorizontal="24dp"
             android:paddingVertical="12dp"
-            android:background="@drawable/btn_selector"
             android:visibility="gone"/>
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/contenedor_almuerzo"
@@ -83,26 +75,22 @@
 
         <Button
             android:id="@+id/btn_cena"
+            style="@style/Widget.CafeteriaUDB.Button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/btn_editar_cena"
-            android:textColor="@color/white"
-            android:textSize="25sp"
             android:paddingHorizontal="24dp"
             android:paddingVertical="12dp"
-            android:background="@drawable/btn_selector"
-            android:backgroundTint="@null"
             android:layout_marginVertical="10dp"
-            android:layout_marginHorizontal="15sp"
-            android:fontFamily="@font/dancingscript_bold"/>
+            android:layout_marginHorizontal="15sp"/>
         <Button
             android:id="@+id/btn_agregar_cena"
+            style="@style/Widget.CafeteriaUDB.Button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/btn_agregar_plato"
             android:paddingHorizontal="24dp"
             android:paddingVertical="12dp"
-            android:background="@drawable/btn_selector"
             android:visibility="gone"/>
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/contenedor_cena"

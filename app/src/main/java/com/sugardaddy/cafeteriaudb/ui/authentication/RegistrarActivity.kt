@@ -111,6 +111,8 @@ class RegistrarActivity : AppCompatActivity() {
             Log.d("Registro", "Fecha seleccionada: $fechaSeleccionada")
         }
 
+
+
         if (!supportFragmentManager.isStateSaved) {
             picker.show(supportFragmentManager, "date_picker")
         } else {
