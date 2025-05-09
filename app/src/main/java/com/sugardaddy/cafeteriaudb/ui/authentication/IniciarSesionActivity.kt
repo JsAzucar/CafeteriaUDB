@@ -125,7 +125,7 @@ class IniciarSesionActivity : AppCompatActivity() {
 
     private fun navegarSegunRol(rol: String) {
         Log.d(TAG, "Navegando según rol: $rol")
-        val intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, InicioActivity::class.java)
         intent.putExtra("ROL_USUARIO", rol)
         startActivity(intent)
         finish()
