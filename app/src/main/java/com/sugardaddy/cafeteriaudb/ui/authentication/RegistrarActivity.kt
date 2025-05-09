@@ -11,7 +11,6 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.FirebaseDatabase
 import com.sugardaddy.cafeteriaudb.R
 import com.sugardaddy.cafeteriaudb.data.model.Usuario
 import com.sugardaddy.cafeteriaudb.data.repository.FirebaseRepository
@@ -31,13 +30,12 @@ class RegistrarActivity : AppCompatActivity() {
     private lateinit var progressBar: ProgressBar
 
     private val auth: FirebaseAuth = FirebaseAuth.getInstance()
-    private val db = FirebaseDatabase.getInstance().getReference("usuarios")
+    private val TAG = "REGISTER_DEBUG"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registrar)
 
-        // Vincular vistas
         edtUsuario = findViewById(R.id.edtUsuario)
         edtEmail = findViewById(R.id.edtEmail)
         edtFecha = findViewById(R.id.dpdFecha)
@@ -52,7 +50,6 @@ class RegistrarActivity : AppCompatActivity() {
         imgNombreAleatorio.setOnClickListener {
             val randomUser = "user" + (1000..9999).random()
             edtUsuario.setText(randomUser)
-            Log.d("Registro", "Nombre aleatorio generado: $randomUser")
         }
 
         txtIrSesion.setOnClickListener {
@@ -70,7 +67,6 @@ class RegistrarActivity : AppCompatActivity() {
 
         btnRegistrar.setOnClickListener {
             if (!Validacion.validarCampos(this, edtUsuario, edtEmail, edtContrasenia, edtContraseniaR)) {
-                Log.d("Registro", "Validación de campos fallida.")
                 return@setOnClickListener
             }
 
@@ -81,7 +77,6 @@ class RegistrarActivity : AppCompatActivity() {
 
             if (contrasenia != edtContraseniaR.text.toString().trim()) {
                 edtContraseniaR.error = "Las contraseñas no coinciden"
-                Log.d("Registro", "Las contraseñas no coinciden.")
                 return@setOnClickListener
             }
 
@@ -92,7 +87,6 @@ class RegistrarActivity : AppCompatActivity() {
                     btnRegistrar.isEnabled = false
                     progressBar.visibility = View.VISIBLE
 
-                    Log.d("Registro", "Confirmación positiva, iniciando verificación de duplicados.")
                     verificarDuplicadosYRegistrar(nombreUsuario, email, contrasenia, fechaNacimiento)
                 }
                 .setNegativeButton("Cancelar", null)
@@ -105,82 +99,72 @@ class RegistrarActivity : AppCompatActivity() {
             .setTitleText("Selecciona tu fecha de nacimiento")
             .build()
 
-        picker.addOnPositiveButtonClickListener { selection ->
+        picker.addOnPositiveButtonClickListener {
             val fechaSeleccionada = picker.headerText
             edtFecha.setText(fechaSeleccionada)
-            Log.d("Registro", "Fecha seleccionada: $fechaSeleccionada")
+            Log.d(TAG, "Fecha seleccionada: $fechaSeleccionada")
         }
 
         if (!supportFragmentManager.isStateSaved) {
             picker.show(supportFragmentManager, "date_picker")
-        } else {
-            Log.e("Registro", "No se pudo mostrar el DatePicker porque el estado del fragmento ya fue guardado.")
         }
     }
 
     private fun verificarDuplicadosYRegistrar(nombreUsuario: String, email: String, contrasenia: String, fecha: String) {
-        db.orderByChild("nombre").equalTo(nombreUsuario).get().addOnSuccessListener { snapshot ->
-            if (snapshot.exists()) {
+        FirebaseRepository.obtenerUsuarioPorNombreOEmail(nombreUsuario) { usuarioExistente, _ ->
+            if (usuarioExistente != null) {
                 edtUsuario.error = "Este nombre de usuario ya existe"
-                Log.d("Registro", "Nombre duplicado encontrado.")
-                return@addOnSuccessListener
+                progressBar.visibility = View.GONE
+                btnRegistrar.isEnabled = true
+                return@obtenerUsuarioPorNombreOEmail
             }
 
-            db.orderByChild("correo").equalTo(email).get().addOnSuccessListener { correoSnap ->
-                if (correoSnap.exists()) {
+            FirebaseRepository.correoExisteEnDatabase(email) { correoExiste ->
+                if (correoExiste) {
                     edtEmail.error = "Este correo ya está registrado"
-                    Log.d("Registro", "Correo duplicado encontrado.")
-                    return@addOnSuccessListener
+                    progressBar.visibility = View.GONE
+                    btnRegistrar.isEnabled = true
+                    return@correoExisteEnDatabase
                 }
 
-                Log.d("Registro", "Intentando crear usuario con correo: $email")
-
                 auth.createUserWithEmailAndPassword(email, contrasenia)
-                    .addOnCompleteListener { task ->
+                    .addOnSuccessListener {
+                        val user = auth.currentUser
+                        Log.d(TAG, "Usuario registrado en Firebase Auth: $email")
 
-                        btnRegistrar.isEnabled = true
-                        progressBar.visibility = View.GONE
+                        user?.sendEmailVerification()
+                        Log.d(TAG, "Correo de verificación enviado a: $email")
 
-                        if (task.isSuccessful) {
-                            val uid = auth.currentUser?.uid
-                            if (uid == null) {
-                                Log.e("Registro", "UID no disponible luego del registro.")
-                                Toast.makeText(this, "Error: UID no disponible", Toast.LENGTH_LONG).show()
-                                return@addOnCompleteListener
+                        val nuevoUsuario = Usuario(
+                            uid = user?.uid ?: "",
+                            nombre = nombreUsuario,
+                            correo = email,
+                            fechaNacimiento = fecha,
+                            rol = "usuario"
+                        )
+
+                        if (!nuevoUsuario.uid.isNullOrEmpty()) {
+                            FirebaseRepository.guardarUsuario(nuevoUsuario.uid, nuevoUsuario) { exito ->
+                                if (!exito) {
+                                    Log.e(TAG, "Fallo al guardar usuario en Realtime Database")
+                                }
                             }
-
-                            val nuevoUsuario = Usuario(
-                                uid = uid,
-                                nombre = nombreUsuario,
-                                correo = email,
-                                fechaNacimiento = fecha,
-                                rol = "usuario"
-                            )
-
-
-                            FirebaseRepository.guardarUsuario(uid, nuevoUsuario)
-
-                            Log.d("Registro", "Usuario guardado en Realtime Database.")
-                            Log.d("DEBUG", "Usuario creado: $nuevoUsuario")
-                            Toast.makeText(this, "Registro exitoso", Toast.LENGTH_LONG).show()
-
-                            Handler(Looper.getMainLooper()).postDelayed({
-                                startActivity(Intent(this, IniciarSesionActivity::class.java))
-                                finish()
-                            },3000)
-
-                        } else {
-                            val errorMsg = task.exception?.message ?: "Error desconocido"
-                            Log.e("Registro", "Fallo al crear usuario: $errorMsg")
-                            Toast.makeText(this, "Error al registrar: $errorMsg", Toast.LENGTH_LONG).show()
                         }
+
+                        Toast.makeText(this, "Registro exitoso. Verifica tu correo antes de iniciar sesión.", Toast.LENGTH_LONG).show()
+
+                        Handler(Looper.getMainLooper()).postDelayed({
+                            startActivity(Intent(this, IniciarSesionActivity::class.java))
+                            finish()
+                        }, 3000)
                     }
-            }.addOnFailureListener {
-                Log.e("Registro", "Error consultando correo: ${it.message}")
+                    .addOnFailureListener { e ->
+                        Toast.makeText(this, "Error al registrar: ${e.message}", Toast.LENGTH_LONG).show()
+                        Log.e(TAG, "Error al crear usuario: ${e.message}")
+                        progressBar.visibility = View.GONE
+                        btnRegistrar.isEnabled = true
+                    }
             }
-        }.addOnFailureListener {
-            Log.e("Registro", "Error consultando nombre: ${it.message}")
         }
     }
 }
-

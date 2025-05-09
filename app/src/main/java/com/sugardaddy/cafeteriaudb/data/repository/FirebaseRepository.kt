@@ -8,8 +8,10 @@ object FirebaseRepository {
 
     private val db: DatabaseReference = FirebaseDatabase.getInstance().getReference("usuarios")
 
-    fun guardarUsuario(uid: String, usuario: Usuario) {
+    fun guardarUsuario(uid: String, usuario: Usuario, onComplete: (Boolean) -> Unit = {}) {
         db.child(uid).setValue(usuario)
+            .addOnSuccessListener { onComplete(true) }
+            .addOnFailureListener { onComplete(false) }
     }
 
     fun obtenerUsuarioPorUID(uid: String, callback: (Usuario?) -> Unit) {
@@ -39,7 +41,7 @@ object FirebaseRepository {
             callback(emptyList())
         }
     }
-    // 🔍 Nuevo: busca un usuario por su nombre de usuario o correo electrónico
+
     fun obtenerUsuarioPorNombreOEmail(input: String, callback: (Usuario?, String?) -> Unit) {
         db.get().addOnSuccessListener { snapshot ->
             for (child in snapshot.children) {
@@ -55,6 +57,21 @@ object FirebaseRepository {
             callback(null, null) // No encontrado
         }.addOnFailureListener {
             callback(null, null)
+        }
+    }
+
+    fun correoExisteEnDatabase(email: String, callback: (Boolean) -> Unit) {
+        db.get().addOnSuccessListener { snapshot ->
+            for (child in snapshot.children) {
+                val usuario = child.getValue(Usuario::class.java)
+                if (usuario != null && usuario.correo.equals(email, ignoreCase = true)) {
+                    callback(true)
+                    return@addOnSuccessListener
+                }
+            }
+            callback(false)
+        }.addOnFailureListener {
+            callback(false)
         }
     }
 }
