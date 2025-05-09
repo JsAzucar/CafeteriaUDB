@@ -13,6 +13,9 @@
         android:theme="@style/Theme.CafeteriaUDB"
         tools:targetApi="31">
         <activity
+            android:name=".ui.authentication.RecuperarContraseniaActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.authentication.IniciarSesionActivity"
             android:exported="false" />
         <activity
