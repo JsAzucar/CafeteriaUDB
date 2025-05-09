@@ -61,7 +61,7 @@ class IniciarSesionActivity : AppCompatActivity() {
                             Log.d(TAG, "Correo verificado. Buscando en Realtime DB por UID: ${user.uid}")
                             FirebaseRepository.obtenerUsuarioPorUID(user.uid) { usuarioDB ->
                                 if (usuarioDB != null) {
-                                    navegarSegunRol(usuarioDB.rol)
+                                    navegarSegunRol(usuarioDB.rol, usuarioDB.nombre)
                                 } else {
                                     mostrarError("No se encontró información del usuario en la base de datos")
                                 }
@@ -88,7 +88,7 @@ class IniciarSesionActivity : AppCompatActivity() {
                                     val user = auth.currentUser
                                     user?.reload()?.addOnSuccessListener {
                                         if (user.isEmailVerified) {
-                                            navegarSegunRol(usuario.rol)
+                                            navegarSegunRol(usuario.rol, usuario.nombre)
                                         } else {
                                             auth.signOut()
                                             mostrarDialogoCorreoNoVerificado(correo)
@@ -123,10 +123,11 @@ class IniciarSesionActivity : AppCompatActivity() {
         Log.e(TAG, "Error mostrado al usuario: $msg")
     }
 
-    private fun navegarSegunRol(rol: String) {
+    private fun navegarSegunRol(rol: String, usuario: String) {
         Log.d(TAG, "Navegando según rol: $rol")
         val intent = Intent(this, InicioActivity::class.java)
         intent.putExtra("ROL_USUARIO", rol)
+        intent.putExtra("NOMBRE_USUARIO", usuario)
         startActivity(intent)
         finish()
     }

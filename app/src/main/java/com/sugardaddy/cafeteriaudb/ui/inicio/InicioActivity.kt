@@ -2,6 +2,7 @@ package com.sugardaddy.cafeteriaudb.ui.inicio
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.Button
@@ -101,8 +102,11 @@ class InicioActivity : AppCompatActivity() {
             btnEditar.visibility = Button.GONE
         }
 
+        Log.d("usuario", "$nombreUsuario")
         val txtTitulo = headerView.findViewById<TextView>(R.id.titulo)
         txtTitulo.text = "Bienvenido, $nombreUsuario"
+        val txtRol = headerView.findViewById<TextView>(R.id.rol)
+        txtRol.text = "Rol: $rolUsuario"
 
         setSupportActionBar(toolbar)
         FirebaseRepository.crearNodos()
