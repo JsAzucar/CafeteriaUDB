@@ -121,9 +121,6 @@ class InicioActivity : AppCompatActivity() {
                 R.id.nav_inicio -> {
                     Toast.makeText(this, "Inicio", Toast.LENGTH_SHORT).show()
                 }
-                R.id.nav_configuracion -> {
-                    Toast.makeText(this, "Configuración", Toast.LENGTH_SHORT).show()
-                }
             }
             vistaInicio.closeDrawer(GravityCompat.START)
             true

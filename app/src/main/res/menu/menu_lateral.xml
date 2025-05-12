@@ -5,9 +5,5 @@
         android:title="Inicio"
         android:icon="@drawable/ic_home" />
 
-    <item
-        android:id="@+id/nav_configuracion"
-        android:title="Configuracion"
-        android:icon="@drawable/ic_settings" />
 
 </menu>
